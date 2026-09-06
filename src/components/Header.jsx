@@ -1,5 +1,5 @@
 import '../style/header.css';
-import { Link } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 import SingUp from './SingUp';
 import { useAuth } from '../store/useAuth';
 import LogoutIcon from '@mui/icons-material/Logout';
@@ -12,6 +12,7 @@ function Header({ search, setSearch, setPage }) {
 
     function LeaveAccount() {
         localStorage.clear()
+        window.location.reload();
     }
 
     const { accessToken, user } = useAuth()
@@ -54,7 +55,7 @@ function Header({ search, setSearch, setPage }) {
                 )}
 
                 {
-                    <button onClick={LeaveAccount}><LogoutIcon/></button>
+                    <button onClick={LeaveAccount}><LogoutIcon /></button>
                 }
             </div>
         </div>
